@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:ng="http://angularjs.org">
+<head>
+  <title>Photo Upload</title>
+  <meta charset="UTF-8">
+  <script type="text/javascript" src="/bower_components/angular/angular.min.js"></script>
+  <script type="text/javascript" src="/bower_components/angular-route/angular-route.js"></script>
+  <script type="text/javascript" src="/bower_components/angular-resource/angular-resource.js"></script>
+
+  <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/css/style.css" rel="stylesheet">
+</head>
+<body ng-app="PhotoUpload">
+<div class="jumbotron">
+  <h1>Photo Upload</h1>
+  <p>Upload Photos and make comments on others</p>
+</div>
+
+<div ng-view></div>
+
+<!-- Scripts -->
+<script type="text/javascript">
+  window.user = <%- user || 'null' %>;
+</script>
+
+<script type="text/javascript" src="/users/users.client.module.js"></script>
+<script type="text/javascript" src="/users/services/authentication.client.service.js"></script>
+
+<script src="/photos/photos.client.module.js"></script>
+<script src="/photos/controllers/photos.client.controller.js"></script>
+<script src="/photos/services/comments.client.service.js"></script>
+<script src="/photos/config/photos.client.routes.js"></script>
+
+<script type="text/javascript" src="/app.js"></script>
+</body>
+</html>

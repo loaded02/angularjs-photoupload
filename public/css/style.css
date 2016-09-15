@@ -1,0 +1,70 @@
+.jumbotron {
+    background-color: #00FA9A;
+    color: black;
+    padding: 100px 25px;
+}
+
+.container-fluid {
+  padding: 60px 50px;
+}
+
+.login, .inputbox {
+    padding: 20px 50px;
+}
+
+div#photosContainer{
+    background:#4D4D4D;
+    color: white;
+    border: 4px ridge lightgray;
+}
+
+div.photoItem{
+    display:inline-block;
+    width:120px;
+}
+
+div#photoContainer,
+div#photoComments{
+    background:#4D4D4D;
+    color: white;
+    width: 50%;
+    height:450px;
+    display: inline-block;
+    float:left;
+    border: 2px ridge lightgray;
+}
+
+div#photoComments{
+    background:white;
+    color: black;
+    max-height:500px;
+    overflow-y:scroll;
+}
+
+div.comment{
+    border: 2px ridge lightgray;
+    padding:10px;
+    border-radius: 5px;
+}
+
+img.listPhoto{
+    width:100px;
+}
+
+img.mainPhoto{
+    max-height: 400px;
+}
+
+.commentBody{
+    background-color:lightgray;
+    border-radius: 5px;
+    padding: 5px;
+    margin:0;
+}
+
+.imageTitle{
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    margin:0
+}

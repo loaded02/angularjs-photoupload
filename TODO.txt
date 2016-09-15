@@ -1,0 +1,3 @@
+- Username in Comments doesnt get populated
+- refactor comment api
+- include upload functionality
