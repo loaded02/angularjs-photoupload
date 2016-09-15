@@ -9,9 +9,6 @@
             <a href="/signout">Signout</a>
         </div>
     </section>
-    <div data-ng-show="error">
-        <strong data-ng-bind="error"></strong>
-    </div>
     <div id="photosContainer">
         <div class="photoItem" ng-repeat="photo in photos">
             <img class="listPhoto" ng-click="setPhoto(photo._id)"
@@ -30,5 +27,32 @@
                  ng-include="'/photos/views/photos-comment-thread.client.view.html'">
             </div>
         </div>
+    </div>
+    <div class="uploadForm">
+        <form name="uploadForm">
+            <fieldset>
+                <legend>Upload Photo</legend>
+                <div class="form-group">
+                    <label for="photoInput">Photo:</label>
+                    <input type="file" ngf-select ng-model="picFile" name="file" accept="image/*" ngf-max-size="2MB" required ngf-model-invalid="errorFile" id="photoInput">
+                    <p class="help-block" ng-show="uploadForm.file.$error.required">*required</p>
+                    <p class="help-block" ng-show="uploadForm.file.$error.maxSize">File too large {{errorFile.size / 1000000|number:1}}MB: max 2M</p>
+                </div>
+                <img ng-show="uploadForm.file.$valid" ngf-thumbnail="picFile" class="thumb">
+                <button ng-click="picFile = null" ng-show="picFile" class="btn">Remove</button>
+                <button ng-disabled="!uploadForm.$valid" ng-click="uploadPic(picFile)" class="btn btn-default">Submit</button>
+                <div class="progressDiv">
+                    <span class="progress" ng-show="picFile.progress >= 0">
+                        <div style="width:{{picFile.progress}}%" ng-bind="picFile.progress + '%'"></div>
+                    </span>
+                    <br>
+                    <span ng-show="picFile.result">Upload Successful</span>
+                    <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <div data-ng-show="error">
+        <strong data-ng-bind="error"></strong>
     </div>
 </div>

@@ -1,4 +1,4 @@
-var app = angular.module('PhotoUpload' , ['ngResource', 'ngRoute', 'users', 'photos']);
+var app = angular.module('PhotoUpload' , ['ngResource', 'ngRoute', 'users', 'photos', 'ngFileUpload']);
 
 app.config(['$locationProvider',
   function($locationProvider) {

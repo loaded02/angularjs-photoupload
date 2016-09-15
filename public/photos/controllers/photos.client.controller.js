@@ -7,7 +7,9 @@ angular.module('photos').controller('PhotoController', [
     '$location',
     'Comments',
     'Authentication',
-    function($scope, $http, $location, Comments, Authentication) {
+    'Upload',
+    '$timeout',
+    function($scope, $http, $location, Comments, Authentication, Upload, $timeout) {
         $scope.authentication = Authentication;
 
         $http.get('/api/photos')
@@ -54,4 +56,23 @@ angular.module('photos').controller('PhotoController', [
                     $scope.photo = {};
                 });
         };
+
+        $scope.uploadPic = function(file) {
+            file.upload = Upload.upload({
+                url: 'https://angular-file-upload-cors-srv.appspot.com/upload',
+                data: {username: $scope.authentication.user, file: file}
+            });
+
+            file.upload.then(function (response) {
+                $timeout(function () {
+                    file.result = response.data;
+                });
+            }, function (response) {
+                if (response.status > 0)
+                    $scope.errorMsg = response.status + ': ' + response.data;
+            }, function (evt) {
+                // Math.min is to fix IE which reports 200% sometimes
+                file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+            });
+        }
     }]);
